@@ -1,0 +1,75 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "com.cb.protobuf.relations";
+
+import "google/protobuf/wrappers.proto";
+
+package com.cb.protobuf.relations;
+
+
+enum  RelationTypeEnum{
+  /*创建关系*/
+  create = 0;
+  /*点赞关系*/
+  like = 1;
+  /*收藏关系*/
+  fav = 2;
+}
+
+message RelationKeyDto {
+  string fromId = 1;
+  string toId = 2;
+  RelationTypeEnum relation = 3; /*关系*/
+}
+
+message RelationDto {
+  RelationKeyDto key = 1;
+  int64  createAt = 2; /*创建时间戳*/
+  // following is detail info, you can use a json as value
+}
+
+message RelationListDto {
+  repeated RelationDto list = 1;
+}
+
+message QueryByFromIdRequest {
+  string fromId = 1;
+}
+
+
+message CountByFromIdRequest {
+  string fromId = 1;
+}
+
+message QueryByFromIdAndRelationRequest {
+  string fromId = 1;
+  RelationTypeEnum relation = 2; /*关系*/
+}
+
+message CountByFromIdAndRelation {
+  string fromId = 1;
+  RelationTypeEnum relation = 2; /*关系*/
+}
+
+message FindByKey {
+  RelationKeyDto key = 1;
+}
+
+
+message QueryByFromIdAndRelationOrderByCreateAt {
+  string fromId = 1;
+  RelationTypeEnum relation = 2; /*关系*/
+  int32 limit= 3;
+  int64 createAtStart = 4;
+  int64  createAtEnd = 5;
+}
+
+
+service RelationFacade {
+  rpc RelationCreated(RelationDto) returns(google.protobuf.BoolValue);
+  rpc RelationDeleted(RelationKeyDto) returns(google.protobuf.BoolValue);
+
+  rpc QueryByFromId(QueryByFromIdRequest) returns(RelationListDto);
+}
+
