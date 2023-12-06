@@ -1,7 +1,5 @@
 package com.cb.releations.kv.infra.persist
 
-import com.cb.protobuf.relations.RelationTypeEnum
-import com.cb.releations.kv.infra.KotlinNoArgs
 import com.datastax.oss.driver.api.mapper.annotations.*
 import com.datastax.oss.driver.api.mapper.entity.naming.NamingConvention
 import java.util.stream.Stream
