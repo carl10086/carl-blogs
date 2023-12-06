@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "com.cb.protobuf.events";
+
+import "google/protobuf/wrappers.proto";
+
+package com.cb.protobuf.events;
+
+
+message FeedPublishedDto {
+  int32 userId = 1;
+  string feedId = 2;
+  int64  feedCreateAt = 3;
+}
