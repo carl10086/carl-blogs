@@ -11,22 +11,22 @@ plugins {
 gradlePlugin {
     plugins.create("cb-java-base") {
         id = name
-        implementationClass = "com.cb.gradle.plugins.build.JavaBasePlugin"
+        implementationClass = "com.cb.gradle.plugins.JavaBasePlugin"
     }
 
     plugins.create("cb-java-lib") {
         id = name
-        implementationClass = "com.cb.gradle.plugins.build.JavaBaseLibraryPlugin"
+        implementationClass = "com.cb.gradle.plugins.JavaBaseLibraryPlugin"
     }
 
     plugins.create("cb-kotlin") {
         id = name
-        implementationClass = "com.cb.gradle.plugins.build.KotlinBasePlugin"
+        implementationClass = "com.cb.gradle.plugins.KotlinBasePlugin"
     }
 
     plugins.create("cb-protobuf") {
         id = name
-        implementationClass = "com.cb.gradle.plugins.build.JavaGrpcProtoBufPlugin"
+        implementationClass = "com.cb.gradle.plugins.JavaGrpcProtoBufPlugin"
     }
 
 }
