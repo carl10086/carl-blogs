@@ -16,7 +16,7 @@ import kotlin.collections.ArrayList
 import kotlin.concurrent.withLock
 
 
-@Service
+//@Service
 open class FeedBizService(
     private val grpcAdapter: GrpcAdapter,
     private val feedOutboxDao: FeedOutboxDao,

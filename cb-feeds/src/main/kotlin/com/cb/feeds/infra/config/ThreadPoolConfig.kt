@@ -39,7 +39,7 @@ open class ThreadPoolConfig {
         return buildPool(
             "userFixAuditPool",  /*临时写死、TODO 后续拖到配置中心*/
             16,
-            0,
+            5,
             ArrayBlockingQueue<Runnable>(128),
         )
     }
