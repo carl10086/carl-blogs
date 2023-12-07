@@ -2,7 +2,7 @@ package com.cb.gradle.plugins;
 
 public interface Versions {
 
-  int JVM_VERSION = 17;
+  int JVM_VERSION = 21;
   String GRPC_VERSION = "1.57.2";
   String PROTOBUF_VERSION = "3.24.0";
   String SPRING_BOOT_VERSION = "3.2.0";
