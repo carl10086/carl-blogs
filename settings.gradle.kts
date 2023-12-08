@@ -11,9 +11,14 @@ include("cb-feeds")
 // base 系列
 //include("cb-base:cb-base-scylla")
 
-for (projectName in listOf("scylla","core")) {
-    val fullProjectName = "cb-base-${projectName}"
-    include(fullProjectName)
-    project(":$fullProjectName").projectDir = File("./cb-base/${projectName}")
-
+fun includeProject(basePath: String, projectNames: List<String>) {
+    for (projectName in projectNames) {
+        val fullProjectName = "${basePath}-${projectName}"
+        include(fullProjectName)
+        project(":$fullProjectName").projectDir = File("./${basePath}/${projectName}")
+    }
 }
+
+includeProject("cb-base", listOf("scylla", "core"))
+includeProject("cb-examples", listOf("netty"))
+includeProject("cb-sch", listOf("es"))
