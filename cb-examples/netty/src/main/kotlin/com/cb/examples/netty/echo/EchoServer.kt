@@ -13,7 +13,7 @@ import io.netty.handler.logging.LogLevel
 import io.netty.handler.logging.LoggingHandler
 
 @Sharable
-class EchoServerHandler : ChannelInboundHandlerAdapter() {
+open class EchoServerHandler : ChannelInboundHandlerAdapter() {
     override fun channelRead(ctx: ChannelHandlerContext, msg: Any) {
         ctx.write(msg)
     }
