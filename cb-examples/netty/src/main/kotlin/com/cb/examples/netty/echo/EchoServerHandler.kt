@@ -13,29 +13,44 @@ import io.netty.handler.logging.LogLevel
 import io.netty.handler.logging.LoggingHandler
 
 @Sharable
-class EchoServer : ChannelInboundHandlerAdapter() {
+class EchoServerHandler : ChannelInboundHandlerAdapter() {
     override fun channelRead(ctx: ChannelHandlerContext, msg: Any) {
         ctx.write(msg)
     }
+
+    override fun channelReadComplete(ctx: ChannelHandlerContext) {
+        ctx.flush()
+    }
+
+    @Deprecated("Deprecated in Java")
+    override fun exceptionCaught(ctx: ChannelHandlerContext, cause: Throwable) {
+        cause.printStackTrace()
+        ctx.close()
+    }
 }
 
-fun main(args: Array<String>) {
+fun main() {
     val boss = NioEventLoopGroup(1)
     val worker = NioEventLoopGroup()
 
-    try {
-        val serverBoot = ServerBootstrap()
+    val serverHandler = EchoServerHandler()
 
-        serverBoot
-            .group(boss, worker)
+    try {
+        val b = ServerBootstrap()
+
+        b.group(boss, worker)
             .channel(NioServerSocketChannel::class.java) /*nio 模式*/
             .option(ChannelOption.SO_BACKLOG, 100)
             .handler(LoggingHandler(LogLevel.INFO))
             .childHandler(object : ChannelInitializer<SocketChannel>() {
                 override fun initChannel(ch: SocketChannel) {
+                    val pipeline = ch.pipeline()
+                    pipeline.addLast(serverHandler)
                 }
             })
 
+        val f = b.bind(8087).sync()
+        f.channel().closeFuture().sync()
     } finally {
         boss.shutdownGracefully()
         worker.shutdownGracefully()
