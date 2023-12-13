@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Test
 internal class RelationDaoTest {
 
 
-    var relationDao: RelationDao
+    private var relationDao: RelationDao
 
     init {
         val sessionBean = Scylla4SessionBean(

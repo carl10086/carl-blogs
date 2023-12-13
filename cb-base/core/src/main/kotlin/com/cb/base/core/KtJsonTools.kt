@@ -23,7 +23,7 @@ class KtJsonTools {
          * 1. 强制定义策略是 下划线转驼峰
          * 2. 支持 protobuf 生成的类直接转 json
          */
-        val mapper: ObjectMapper = jacksonObjectMapper()
+        private val mapper: ObjectMapper = jacksonObjectMapper()
             .disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES)
             .enable(DeserializationFeature.ACCEPT_SINGLE_VALUE_AS_ARRAY)
             .registerModule(ProtobufModule())

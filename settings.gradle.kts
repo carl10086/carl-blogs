@@ -19,6 +19,6 @@ fun includeProject(basePath: String, projectNames: List<String>) {
     }
 }
 
-includeProject("cb-base", listOf("scylla", "core"))
+includeProject("cb-base", listOf("scylla", "core", "redis"))
 includeProject("cb-examples", listOf("netty", "opentelemetry"))
 includeProject("cb-sch", listOf("es"))
