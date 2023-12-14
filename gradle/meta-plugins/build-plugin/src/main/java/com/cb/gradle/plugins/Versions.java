@@ -9,4 +9,6 @@ public interface Versions {
   String ARMERIA_VERSION = "1.24.3";
 
   String KOTLIN = "1.9.21";
+
+  String OPENTELEMTRY_VERSION = "1.33.0";
 }

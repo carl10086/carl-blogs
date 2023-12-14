@@ -73,6 +73,11 @@ public class JavaBasePlugin implements Plugin<Project> {
                          "com.linecorp.armeria:armeria-bom:" + Versions.ARMERIA_VERSION)
     );
 
+    dependencies.add("api",
+                     dependencies.platform(
+                         "io.opentelemetry:opentelemetry-bom:" + Versions.OPENTELEMTRY_VERSION)
+    );
+
     dependencies.add("testImplementation", "org.junit.jupiter:junit-jupiter");
     dependencies.add("testImplementation", "org.assertj:assertj-core");
 
