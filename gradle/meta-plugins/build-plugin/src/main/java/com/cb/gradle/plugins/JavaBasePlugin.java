@@ -70,12 +70,17 @@ public class JavaBasePlugin implements Plugin<Project> {
 
     dependencies.add("api",
                      dependencies.platform(
-                         "com.linecorp.armeria:armeria-bom:" + Versions.ARMERIA_VERSION)
+                         "com.linecorp.armeria:armeria-bom:" + Versions.ARMERIA)
     );
 
     dependencies.add("api",
                      dependencies.platform(
                          "io.opentelemetry:opentelemetry-bom:" + Versions.OPENTELEMTRY_VERSION)
+    );
+
+    dependencies.add("api",
+                     dependencies.platform(
+                         "org.http4k:http4k-bom:" + Versions.HTTP4K)
     );
 
     dependencies.add("testImplementation", "org.junit.jupiter:junit-jupiter");
