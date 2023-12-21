@@ -27,7 +27,7 @@ public class JavaGrpcProtoBufPlugin implements Plugin<Project> {
     dependencies.add("api", "io.grpc:grpc-protobuf:"+Versions.GRPC_VERSION);
     dependencies.add("api", "io.grpc:grpc-stub:"+Versions.GRPC_VERSION);
     dependencies.add("api", "com.google.protobuf:protobuf-java-util:" + Versions.PROTOBUF_VERSION);
-    dependencies.add("api", "com.linecorp.armeria:armeria-grpc:"+Versions.ARMERIA_VERSION);
+    dependencies.add("api", "com.linecorp.armeria:armeria-grpc:"+Versions.ARMERIA);
     dependencies.add("compileOnly", "javax.annotation:javax.annotation-api:1.3.2"  );
 //    dependencies.add("compileOnly", "javax.annotation:javax.annotation-api:");
 
