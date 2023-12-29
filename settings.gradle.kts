@@ -3,7 +3,7 @@ pluginManagement {
 }
 rootProject.name = "carl-blogs"
 
-include("it", "cb-relations:cb-relations-kv:cb-relations-graph")
+include("it", "cb-relations:cb-relations-kv")
 include("cb-protobuf")
 include("cb-feeds")
 
@@ -22,3 +22,4 @@ fun includeProject(basePath: String, projectNames: List<String>) {
 includeProject("cb-base", listOf("scylla", "core", "redis"))
 includeProject("cb-examples", listOf("netty", "opentelemetry", "flink"))
 includeProject("cb-sch", listOf("suggest", "recommend"))
+includeProject("cb-act", listOf("consumer"))

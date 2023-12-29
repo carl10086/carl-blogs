@@ -1,19 +1,12 @@
 plugins {
     id("cb-java-lib")
-    id("com.github.johnrengelman.shadow") version ("7.0.0") apply false
+    id("com.github.johnrengelman.shadow") version ("7.1.2")
 }
 
 apply(plugin = "com.github.johnrengelman.shadow")
 
 val flinkVersion = "1.18.0"
-//dependencies {
-//    add("shadow", "org.apache.logging.log4j:log4j-slf4j-impl:")
-//    add("shadow", "org.apache.logging.log4j:log4j-api:")
-//    add("shadow", "org.apache.logging.log4j:log4j-core:")
-//    add("shadow", "org.apache.flink:flink-streaming-java:$flinkVersion")
-//    add("shadow", "org.apache.flink:flink-clients:$flinkVersion")
-//    add("shadow", "org.apache.flink:flink-java:$flinkVersion")
-//}
+
 
 
 dependencies {
