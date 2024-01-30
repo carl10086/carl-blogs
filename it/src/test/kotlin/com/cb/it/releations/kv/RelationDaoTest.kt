@@ -1,9 +1,9 @@
-package com.cb.releations.kv
+package com.cb.it.releations.kv
 
 import com.cb.base.scylla.Scylla4SessionBean
 import com.cb.base.scylla.ScyllaConfig
-import com.cb.releations.kv.infra.config.ScyllaMapperBuilder
-import com.cb.releations.kv.infra.persist.RelationDao
+import com.cb.it.releations.kv.infra.config.ScyllaMapperBuilder
+import com.cb.it.releations.kv.infra.persist.RelationDao
 import org.junit.jupiter.api.Test
 
 internal class RelationDaoTest {

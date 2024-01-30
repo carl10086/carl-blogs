@@ -1,4 +1,4 @@
-package com.cb.releations.kv.infra.persist
+package com.cb.it.releations.kv.infra.persist
 
 import com.datastax.oss.driver.api.mapper.annotations.*
 import com.datastax.oss.driver.api.mapper.entity.naming.NamingConvention

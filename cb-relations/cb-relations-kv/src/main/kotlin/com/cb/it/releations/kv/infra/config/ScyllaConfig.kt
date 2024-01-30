@@ -1,7 +1,7 @@
-package com.cb.releations.kv.infra.config
+package com.cb.it.releations.kv.infra.config
 
 import com.cb.base.scylla.Scylla4SessionBean
-import com.cb.releations.kv.infra.persist.RelationDao
+import com.cb.it.releations.kv.infra.persist.RelationDao
 import com.datastax.oss.driver.api.mapper.annotations.*
 import org.slf4j.LoggerFactory
 import org.springframework.beans.factory.annotation.Value

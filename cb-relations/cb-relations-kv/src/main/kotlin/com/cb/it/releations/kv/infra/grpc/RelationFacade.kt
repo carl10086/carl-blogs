@@ -1,4 +1,4 @@
-package com.cb.releations.kv.infra.grpc
+package com.cb.it.releations.kv.infra.grpc
 
 import com.cb.protobuf.relations.RelationFacadeGrpc.RelationFacadeImplBase
 

@@ -1,4 +1,4 @@
-package com.cb.releations.kv.infra
+package com.cb.it.releations.kv.infra
 
 
 @Target(AnnotationTarget.CLASS)
