@@ -1,6 +1,6 @@
 plugins {
     id("cb-kotlin")
-    kotlin("plugin.noarg") version "1.9.21"
+    kotlin("plugin.noarg") version "2.0.0"
 }
 
 noArg {
