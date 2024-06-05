@@ -1,7 +1,7 @@
 package com.cb.it.algo;
 
+import java.util.ArrayDeque;
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
 
@@ -9,92 +9,71 @@ public class GenerateParenthesis {
 
   private static class Node {
 
-    private String value;
+    String val;
+    int leftRemain;
+    int rightRemain;
 
-    /**
-     * 剩余的 left
-     */
-    private int left;
-
-    /**
-     * 剩余的 right
-     */
-    private int right;
-
-
-    @Override
-    public String toString() {
-      return "Node{" +
-          "value='" + value + '\'' +
-          ", left=" + left +
-          ", right=" + right +
-          '}';
+    public Node(String val, int leftRemain, int rightRemain) {
+      this.val = val;
+      this.leftRemain = leftRemain;
+      this.rightRemain = rightRemain;
     }
 
-    public Node(String value, int left, int right) {
-      this.value = value;
-      this.left = left;
-      this.right = right;
+    public Node leftChild() {
+      return new Node(val + "(", leftRemain - 1, rightRemain);
     }
 
-    private boolean mayValid() {
-      return left >= 0 && right >= 0 && left <= right;
+    public Node rightChild() {
+      return new Node(val + ")", leftRemain, rightRemain - 1);
     }
 
-    private boolean valid() {
-      return left == 0 && right == 0;
-
+    public boolean maySuccess() {
+      return leftRemain <= rightRemain && leftRemain >= 0 && rightRemain >= 0;
     }
   }
 
   public List<String> generateParenthesis(int n) {
-    Queue<Node> bfs = new LinkedList<>();
-    bfs.add(new Node("", n, n));
+    Queue<Node> queue = new ArrayDeque<>();
+
+    Node root = new Node("", n, n);
+
+    queue.add(root);
+
     int level = 0;
-    List<String> result = new ArrayList<>();
 
-    while (!bfs.isEmpty()) {
-      List<Node> levelNodes = new ArrayList<>();
-      while (!bfs.isEmpty()) {
-        levelNodes.add(bfs.poll());
-      }
-
-      for (Node node : levelNodes) {
-        String value = node.value;
-        Node leftChild = new Node(
-            value + "(",
-            node.left - 1,
-            node.right
-        );
-
-        Node rightChild = new Node(
-            value + ")",
-            node.left,
-            node.right - 1
-        );
-
-        if (leftChild.valid()) {
-          result.add(leftChild.value);
-        } else if (leftChild.mayValid()) {
-          bfs.add(leftChild);
-        }
-
-        if (rightChild.valid()) {
-          result.add(rightChild.value);
-        } else if (rightChild.mayValid()) {
-          bfs.add(rightChild);
-        }
-
-      }
-
+    while (!queue.isEmpty()) {
       level++;
+      List<Node> levelNodes = new ArrayList<>();
+      while (!queue.isEmpty()) {
+        levelNodes.add(queue.poll());
+      }
+
+      for (Node levelNode : levelNodes) {
+        var leftChild = levelNode.leftChild();
+        var rightChild = levelNode.rightChild();
+
+        if (leftChild.maySuccess()) {
+          queue.add(leftChild);
+        }
+        if (rightChild.maySuccess()) {
+          queue.add(rightChild);
+        }
+      }
+
+      if (level == 2 * n) {
+        return queue.stream().map(x -> x.val).toList();
+      }
+
+
     }
 
-    return result;
+    return null;
+
   }
 
+
   public static void main(String[] args) {
-    System.out.println(new GenerateParenthesis().generateParenthesis(2));
+    System.out.println(new GenerateParenthesis().generateParenthesis(3));
   }
 
 

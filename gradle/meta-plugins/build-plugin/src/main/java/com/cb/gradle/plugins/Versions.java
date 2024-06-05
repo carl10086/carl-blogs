@@ -8,7 +8,7 @@ public interface Versions {
   String SPRING_BOOT_VERSION = "3.2.0";
   String ARMERIA = "1.24.3";
 
-  String KOTLIN = "1.9.21";
+  String KOTLIN = "2.0.0";
 
   String OPENTELEMTRY_VERSION = "1.33.0";
 
