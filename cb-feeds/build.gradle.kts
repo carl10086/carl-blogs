@@ -3,7 +3,6 @@ import org.jetbrains.kotlin.fir.expressions.builder.buildArgumentList
 plugins {
     id("cb-kotlin")
 //    id("org.graalvm.buildtools.native") version ("0.9.27")
-//    id("org.springframework.boot") version ("3.2.0")
 }
 
 //noArg {
