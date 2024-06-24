@@ -10,6 +10,8 @@ dependencies {
     api("org.slf4j:slf4j-api:")
 //    0.9.13
     implementation("com.hubspot.jackson:jackson-datatype-protobuf:0.9.13")
+    implementation("org.springframework:spring-core:6.1.10")
+
 
     testImplementation(project(":cb-protobuf"))
 }
