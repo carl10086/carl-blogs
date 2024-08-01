@@ -2,10 +2,10 @@ plugins {
     id("java")
     id("maven-publish")
     id("java-gradle-plugin")
-    kotlin("jvm") version ("2.0.0") apply (false)
     kotlin("kapt") version ("2.0.0") apply (false)
-    id("org.springframework.boot") version ("3.2.6") apply (false)
+    id("org.springframework.boot") version ("3.3.2") apply (false)
     id("com.google.protobuf") version ("0.9.4") apply (false)
+    kotlin("jvm") version "2.0.0"
 }
 
 gradlePlugin {
@@ -24,6 +24,13 @@ gradlePlugin {
         implementationClass = "com.cb.gradle.plugins.KotlinBasePlugin"
     }
 
+    plugins.create("cb-kotlin-app") {
+        id = name
+        implementationClass = "com.cb.gradle.plugins.KotlinAppPlugin"
+    }
+
+
+
     plugins.create("cb-protobuf") {
         id = name
         implementationClass = "com.cb.gradle.plugins.JavaGrpcProtoBufPlugin"
@@ -34,6 +41,13 @@ gradlePlugin {
 
 dependencies {
     implementation("org.jetbrains.kotlin:kotlin-gradle-plugin:1.9.21")
-    implementation("org.springframework.boot:spring-boot-gradle-plugin:3.2.0")
+    implementation("org.springframework.boot:spring-boot-gradle-plugin:3.3.2")
     implementation("com.google.protobuf:protobuf-gradle-plugin:0.9.4")
+    implementation(kotlin("stdlib-jdk8"))
+}
+repositories {
+    mavenCentral()
+}
+kotlin {
+    jvmToolchain(21)
 }
